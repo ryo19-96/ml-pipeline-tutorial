@@ -1,6 +1,11 @@
 from pathlib import Path
 
+from components.eval_predict.component import evaluate_and_predict
+from components.feature_engineering.component import (
+    additional_feature_engineering,
+)
 from components.query_bigquery.component import query_bigquery_to_gcs
+from components.train_lightgbm.component import train_lightgbm
 from kfp import dsl
 from kfp.v2 import compiler
 from kfp.v2.dsl import Dataset, Input, component
@@ -28,7 +33,16 @@ def pipeline() -> None:
         bucket="pipeline_tutorial_house_prices",
         path_prefix="house_prices/feature_engineering",
     )
-    _ = read_csv_and_print_shape(data=bq_task.outputs["output_path"])
+    feature_task = additional_feature_engineering(
+        data=bq_task.outputs["output_path"],
+    )
+
+    model_task = train_lightgbm(data=feature_task.outputs["output_data"])
+
+    _ = evaluate_and_predict(
+        data=feature_task.outputs["output_data"],
+        model=model_task.outputs["model"],
+    )
 
 
 if __name__ == "__main__":
