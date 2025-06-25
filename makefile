@@ -2,14 +2,14 @@
 # === Ruff ===
 
 lint:
-	poetry run ruff check
+	uv run ruff check
 
 fmt:
-	poetry run ruff check --fix
+	uv run ruff check --fix
 
 all: fmt lint
 
-# === terraform ===
+# === Terraform ===
 
 terraform_init:
 	cd terraform && terraform init
