@@ -10,14 +10,6 @@ def additional_feature_engineering(
     output_data: Output[Dataset],
 ) -> None:
     """Create additional features using pandas."""
-    import pandas as pd
+    from model.feature_extracton import create_features
 
-    df = pd.read_parquet(data.uri)
-    df["TotalPorchSF"] = (
-        df["OpenPorchSF"]
-        + df["EnclosedPorch"]
-        + df["3SsnPorch"]
-        + df["ScreenPorch"]
-    )
-    df = df.fillna(0)
-    df.to_parquet(output_data.uri, index=False)
+    create_features(data.uri, output_data.uri)

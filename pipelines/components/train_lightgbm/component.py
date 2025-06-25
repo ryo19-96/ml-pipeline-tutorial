@@ -17,20 +17,6 @@ def train_lightgbm(
     model: Output[Model],
 ) -> None:
     """Train a LightGBM model."""
-    import joblib
-    import pandas as pd
-    from lightgbm import LGBMRegressor
-    from sklearn.model_selection import train_test_split
+    from model.train import train_model
 
-    df = pd.read_parquet(data.uri)
-    X = df.drop(columns=["SalePrice"])
-    y = df["SalePrice"]
-
-    X_train, X_test, y_train, y_test = train_test_split(
-        X, y, test_size=0.2, random_state=42,
-    )
-
-    model_lgb = LGBMRegressor(random_state=42)
-    model_lgb.fit(X_train, y_train)
-
-    joblib.dump(model_lgb, model.path)
+    train_model(data.uri, model.path)
