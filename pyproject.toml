@@ -4,4 +4,63 @@ version = "0.1.0"
 description = "Add your description here"
 readme = "README.md"
 requires-python = ">=3.10"
-dependencies = []
+dependencies = [
+    "google-cloud-aiplatform>=1.98.0",
+    "kfp>=2.13.0",
+    "pandas>=2.3.0",
+    "ruff>=0.12.0",
+]
+
+[tool.ruff]
+line-length = 120
+lint.select = ["ALL"]
+lint.ignore = [
+    "D",
+    "PLR0913",
+    "ANN002",
+    "ANN003",
+    "RUF001",
+    "RUF002",
+    "RUF003",
+    "BLE001",
+    "RET504",
+    "G004",
+    "PD901",
+    "TD002",
+    "TD003",
+    "FIX002",
+    "B006",
+    "PTH118",
+    "PTH208",
+    "N803",
+    "N806",
+    "B904",
+    "FBT003",
+    "UP006",
+    "UP007",
+    "ANN401",
+    "S202",
+    "S301",
+    "S603",
+    "E402",
+    "UP035",
+    "T201",
+    "FBT001",
+    "FBT002",
+    "PLR2004",
+    "PLR0911",
+    "PLR0912",
+    "C901",
+    "PLE1205",
+    "PD011",
+    "ANN001",
+    "INP001",
+    "PGH003",
+    "S608",
+    "SLF001",
+    "PERF401",
+    "PLC0415",
+]
+
+[tool.ruff.lint.pydocstyle]
+convention = "google"
