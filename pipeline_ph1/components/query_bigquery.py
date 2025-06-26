@@ -16,10 +16,12 @@ def query_bigquery_to_gcs(
     """クエリを実行し、BigQuery テーブルから GCS にエクスポートするコンポーネント
 
     Args:
-        sql_file (str): 実行する SQL クエリのファイルパス
+        query_str (str): 実行する SQL クエリの文字列
         bucket (str): 出力先の GCS バケット名
         path_prefix (str): 出力ファイルのパスプレフィックス
-        location (str): BigQuery のロケーション（デフォルトは 'asia-northeast1'）
+        output_path (Output[Dataset]): 出力データセットのパス
+        project (str): GCP プロジェクト名
+        location (str): BigQuery のロケーション
 
     Returns:
         None

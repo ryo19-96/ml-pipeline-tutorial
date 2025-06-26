@@ -23,9 +23,12 @@ def evaluate_and_predict(
     """モデルの評価と予測を行うコンポーネント
 
     Args:
-        data: 入力データセットのパス
         model: 学習済みモデルのパス
-        predictions: 予測結果を保存する出力データセットのパス
+        valid_feature: 検証用特徴量データセットのパス
+        valid_target: 検証用ターゲットデータセットのパス
+        test_feature: テスト用特徴量データセットのパス
+        outputs: 予測結果を保存する出力データセットのパス
+        metrics: 評価指標を保存する出力メトリクス
     """
 
     import logging

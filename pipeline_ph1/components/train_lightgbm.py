@@ -20,7 +20,8 @@ def train_lightgbm(
     """LightGBMモデルを学習するコンポーネント
 
     Args:
-        data: 入力データセットのパス
+        train_path: 学習用データセットのパス
+        target_path: 学習用目的変数のパス
         model: 学習済みモデルの保存先パス
     """
 
