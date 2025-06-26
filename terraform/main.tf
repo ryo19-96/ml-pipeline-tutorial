@@ -19,7 +19,8 @@ resource "google_project_service" "required_apis" {
     "storage.googleapis.com",
     "bigquery.googleapis.com",
     "compute.googleapis.com",
-    "artifactregistry.googleapis.com"
+    "artifactregistry.googleapis.com",
+    "cloudbuild.googleapis.com",
   ])
   project = var.project_id
   service = each.key
@@ -43,4 +44,8 @@ module "vertex_ai" {
   project_id = var.project_id
 }
 
-
+module "artifact_registry" {
+  source         = "./modules/artifact_registry"
+  region         = var.region
+  docker_repo_id = var.docker_repo_id
+}

@@ -36,3 +36,9 @@ resource "google_project_iam_member" "pipeline_bigquery" {
   role    = "roles/bigquery.admin"
   member  = "serviceAccount:${google_service_account.pipeline_sa.email}"
 }
+
+resource "google_project_iam_member" "pipeline_artifact_reader" {
+  project = var.project_id
+  role    = "roles/artifactregistry.reader"
+  member  = "serviceAccount:${google_service_account.pipeline_sa.email}"
+}

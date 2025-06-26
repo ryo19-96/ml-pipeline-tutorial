@@ -41,10 +41,10 @@ def query_bigquery_to_gcs(
 
     # テーブルを GCS にエクスポート
     destination_uri = f"gs://{bucket}/{path_prefix}.parquet"
-    job_config = bigquery.ExtractJobConfig(destination_format="PARQUET")
+    extract_job_config = bigquery.ExtractJobConfig(destination_format="PARQUET")
     extract_job = client.extract_table(
         temp_table,
-        job_config=job_config,
+        job_config=extract_job_config,
         destination_uris=destination_uri,
         location=location,
     )

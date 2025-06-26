@@ -17,3 +17,7 @@ variable "pipeline_bucket_name" {
 variable "house_prices_data_bucket_name" {
   default = "pipeline_tutorial_house_prices_data"
 }
+
+variable "docker_repo_id" {
+  default = "house-prices-docker-repo"
+}
