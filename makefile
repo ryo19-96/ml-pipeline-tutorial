@@ -1,4 +1,4 @@
-.PHONY: lint fmt mypy all terraform_init terraform_plan terraform_apply
+.PHONY: lint fmt mypy all terraform_init terraform_plan terraform_apply pipeline_run
 # === Ruff ===
 
 lint:
@@ -19,3 +19,7 @@ terraform_plan:
 
 terraform_apply:
 	cd terraform && terraform apply $(args)
+
+# === pipeline ===
+pipeline_run:
+	python -m pipeline_ph1.pipelines.house_prices_pipeline --enable_cache=$(enable_cache)
