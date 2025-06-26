@@ -23,6 +23,11 @@ def split_data(
 
     Args:
         data: 入力データセットのパス
+        train_features: 学習用特徴量の保存先パス
+        train_target: 学習用目的変数の保存先パス
+        valid_features: 検証用特徴量の保存先パス
+        valid_target: 検証用目的変数の保存先パス
+        test_features: 推論用特徴量の保存先パス
     """
 
     import pandas as pd
